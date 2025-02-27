@@ -4,6 +4,7 @@ import { BookingInfoTable } from './BookingInfoTable'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import { ReviewModal } from './ReviewModal'
+import { checkInDatePassed } from '../utils/checkInDatePassed'
 
 interface IRoom {
   _id: string
@@ -52,7 +53,7 @@ export const MyBookingCard: FC<IBookings> = ({ bookings }) => {
               <div className='col-span-2'>
                 <BookingInfoTable booking={booking} />
                 <div className='p-4 flex gap-2'>
-                  <Button variant='outlined' style={{ fontSize: '14px' }} onClick={handleOpenModal}>Написать отзыв</Button>
+                  <Button disabled={checkInDatePassed(booking.startDate)} variant='outlined' style={{ fontSize: '14px' }} onClick={handleOpenModal}>Написать отзыв</Button>
                   <Link to={`/room/${booking.room._id}`}>
                     <Button variant='contained' style={{ backgroundColor: 'purple' }}>Перейти к странице номера</Button>
                   </Link>

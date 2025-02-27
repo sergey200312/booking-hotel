@@ -1,6 +1,6 @@
 import { useMutation } from "react-query"
 import { useDispatch } from "react-redux"
-import { loginUser} from "../api/auth"
+import { loginUser } from "../api/auth"
 import { login } from '../store/features/authSlice'
 
 export const useLogin = () => {
@@ -15,11 +15,12 @@ export const useLogin = () => {
         {
             onSuccess: (data) => {
                 dispatch(login({ token: data.token }))
-                console.log(data)
+                localStorage.setItem('firstName', data.firstName)
+                localStorage.setItem('lastName', data.lastName)
             },
             onError: (error) => {
                 console.error('Ошибка: ', error)
             }
         }
-     )
+    )
 }

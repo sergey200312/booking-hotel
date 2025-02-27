@@ -115,13 +115,6 @@ export const Register: React.FC = () => {
 
                         </FormControl>
                     </div>
-                    <div>
-                        <LocalizationProvider dateAdapter={AdapterDayjs}>
-                            <DemoContainer components={['DatePicker']}>
-                                <DatePicker label="Дата рождения" sx={{ width: '100%' }} value={selectedDate} onChange={handleDateChange} />
-                            </DemoContainer>
-                        </LocalizationProvider>
-                    </div>
                     <div className='mt-2'>
                         <TextField
                             id="email"

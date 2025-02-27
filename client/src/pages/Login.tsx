@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Layout } from '../components/Layout'
 import { Box, Button, FormControl, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@mui/material'
 import { useLogin } from '../hooks/useLogin'
@@ -16,8 +16,12 @@ export const Login: React.FC = () => {
         email: '',
         password: ''
     })
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
     
-    const { mutate: login, isLoading, error } = useLogin();
+    const { mutate: login, isLoading } = useLogin();
 
     const navigate = useNavigate();
 

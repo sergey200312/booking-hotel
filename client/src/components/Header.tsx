@@ -3,9 +3,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
 import { FaUserAlt } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { getFromLocalStorage } from '../utils/getFromLocalStorage';
+import { useDispatch } from 'react-redux';
+import { logout } from '../store/features/authSlice';
 
 export const Header: React.FC = () => {
     const isAuth = useAuth()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     return (
         <div>
             <header className='p-5'>
@@ -23,16 +29,22 @@ export const Header: React.FC = () => {
                     <div className='flex justify-center items-center gap-6 pl-[460px] '>
                         {isAuth ? (
                             <>
-                                <div className='flex items-center'>
-                                    <Link to='/profile'>
-                                        <FaUserAlt className='size-6' />
+                                <div className='flex items-center gap-10'>
+                                    <Link to='/profile' className='flex items-center'>
+                                        <FaUserAlt size={30} />
+                                        <div className='ml-2'>
+                                            <p className='font-medium text-xl'>{getFromLocalStorage('firstName')} {getFromLocalStorage('lastName')}</p>
+                                        </div>
                                     </Link>
+                                    <div>
+                                        <Button onClick={() => dispatch(logout())} variant='outlined'>Выйти</Button>
+                                    </div>
                                 </div>
 
 
                             </>) :
-                            (<><Button variant='outlined'>Войти</Button>
-                                <Button variant='contained'>Зарегистрироваться</Button></>)
+                            (<><Button variant='outlined' onClick={() => navigate('/login')}>Войти</Button>
+                                <Button variant='contained' onClick={() => navigate('/register')}>Зарегистрироваться</Button></>)
                         }
 
                     </div>

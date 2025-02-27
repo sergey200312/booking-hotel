@@ -8,6 +8,8 @@ import { calculateBookingCost } from '../service/room/calculateBookingCoast';
 import { useBooking } from '../hooks/useBooking';
 import { getOccupiedDates } from '../api/booking';
 import { useQuery } from 'react-query';
+import { useAuth } from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 interface IProps {
     number: number
@@ -24,6 +26,8 @@ export const BookingCard: FC<IProps> = ({ number, type, price, roomId }) => {
     const [days, setDays] = useState<number | null>(null)
     const [total, setTotal] = useState<number>(0)
     const { mutate: booking, isLoading } = useBooking()
+    const isAuth = useAuth()
+    const navigate = useNavigate()
 
     const { data: occupiedDates = [], isLoading: loading } = useQuery(['occupiedDates', roomId], () => getOccupiedDates(roomId))
 
@@ -45,7 +49,8 @@ export const BookingCard: FC<IProps> = ({ number, type, price, roomId }) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        booking({ roomId, dataBooking: { checkInDate, checkOutDate }})
+        isAuth ? booking({ roomId, dataBooking: { checkInDate, checkOutDate }}) : navigate('/login')
+        
     }
 
     return (

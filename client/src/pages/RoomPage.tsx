@@ -55,14 +55,6 @@ export const RoomPage: React.FC = () => {
                 <div className="grid grid-cols-3 gap-4">
                     <div className="col-span-2">
                         <div className="grid grid-cols-2 gap-4 mb-10">
-                            <div>
-                                <p className="text-xl font-semibold mb-4">Сведения о номере</p>
-                                <AmenitiesSection />
-                            </div>
-                            <div>
-                                <p className="text-xl font-semibold mb-4">Впечатления о номере</p>
-                                <p>Общая оценка: <span className="font-bold">5 из 5</span></p>
-                            </div>
                         </div>
 
                         <div className="mr-20 mb-10">

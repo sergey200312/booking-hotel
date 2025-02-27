@@ -14,8 +14,8 @@ export const getProfile = async () => {
 }
 
 export const register = async (formData: { firstName: string, lastName: string,
-     gender: string, dateOfBirth: Date, email: string, password: string }) => {
-        const response = await axios.post('http://localhost:3000/api/auth/login', formData)
+     gender: string, email: string, password: string }) => {
+        const response = await axios.post('http://localhost:3000/api/user', formData)
 
         return response.data
 }
