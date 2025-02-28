@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
         <div>
             <header className='p-5'>
                 <div className='flex items-center'>
-                    <h1 className='text-2xl'>Logo</h1>
+                    <Link to='/'><h1 className='text-2xl'>Logo</h1></Link>
                     <nav className='pl-56'>
                         <ul className='flex space-x-2'>
                             <li><Link to='/test' />Доступные номера</li>

@@ -8,8 +8,7 @@ export const ProfileSidebarMenu: FC = () => {
         <ul className='flex flex-col gap-2'>
           <Link to='/profile'><li>Мой профиль</li></Link>
           <Link to='/my-bookings'><li>Мои бронирования</li></Link>
-          <li>Понравилось</li>
-          <li>Избранное</li>
+          <Link to='/favorite-rooms'><li>Понравилось</li></Link>
         </ul>
       </nav>
     </div>

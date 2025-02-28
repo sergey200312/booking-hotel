@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Layout } from '../components/Layout';
-import { AmenitiesSection } from '../components/AmenitiesSection';
 import { BookingCard } from '../components/BookingCard';
 import { ReviewList } from '../components/ReviewList';
 import { BookingRules } from '../components/BookingRules';
@@ -9,7 +8,7 @@ import { getDetailRoom } from '../api/room';
 import { useQuery } from 'react-query';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick-theme.css";;
 
 export const RoomPage: React.FC = () => {
     const { id } = useParams();
@@ -75,6 +74,7 @@ export const RoomPage: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                
             </div>
         </Layout>
     );

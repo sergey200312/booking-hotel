@@ -49,7 +49,7 @@ export const BookingCard: FC<IProps> = ({ number, type, price, roomId }) => {
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
-        isAuth ? booking({ roomId, dataBooking: { checkInDate, checkOutDate }}) : navigate('/login')
+        isAuth ? booking({ roomId, dataBooking: { checkInDate, checkOutDate }}): navigate('/login')
         
     }
 
